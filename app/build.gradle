@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.example.maoliveira.testekaspersky"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor' // butterknife
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    testCompile "junit:junit:$rootProject.junit"
+
+    // Support
+    compile "com.android.support:appcompat-v7:$rootProject.appcompat"
+
+    compile "com.android.support:support-annotations:$rootProject.supportannotations"
+
+    // RxJava
+    compile "io.reactivex:rxjava:$rootProject.rxjava"
+    compile "io.reactivex:rxandroid:$rootProject.rxandroid"
+
+    compile "javax.inject:javax.inject:$rootProject.javaxinject"
+    compile "javax.annotation:javax.annotation-api:$rootProject.annotationapi"
+
+    //Butterknife
+    compile 'com.jakewharton:butterknife:6.1.0'
+
+    // Dagger
+    compile "com.google.dagger:dagger:$rootProject.dagger"
+    apt "com.google.dagger:dagger-compiler:$rootProject.daggercompiler"
+    provided "org.glassfish:javax.annotation:$rootProject.glassfishannotations"
+
+    // AutoValue / PaperParcel
+    compile "com.google.auto.value:auto-value:$rootProject.autovalue"
+    compile "com.github.grandstaish.paperparcel:paperparcel:$rootProject.paperparcel"
+    apt "com.github.grandstaish.paperparcel:compiler:$rootProject.paperparcelcompiler"
+}
