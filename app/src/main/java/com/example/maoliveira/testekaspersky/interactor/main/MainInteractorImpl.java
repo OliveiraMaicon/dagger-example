@@ -11,11 +11,17 @@ import javax.inject.Inject;
  */
 public class MainInteractorImpl implements MainInteractor{
 
-    @Inject
     AntivirusService antivirusService;
+
+    @Inject
+    public MainInteractorImpl(AntivirusService antivirusService){
+        this.antivirusService = antivirusService;
+    }
 
     @Override
     public void startScan(View view) {
         antivirusService.scan();
     }
+
+
 }

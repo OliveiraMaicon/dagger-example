@@ -1,5 +1,7 @@
 package com.example.maoliveira.testekaspersky.ui.fragment.main;
 
+import com.example.maoliveira.testekaspersky.domain.service.antivirus.AntivirusService;
+import com.example.maoliveira.testekaspersky.domain.service.antivirus.AntivirusServiceImpl;
 import com.example.maoliveira.testekaspersky.infrastructure.annotation.ActivityScope;
 import com.example.maoliveira.testekaspersky.interactor.main.MainInteractor;
 import com.example.maoliveira.testekaspersky.interactor.main.MainInteractorImpl;
@@ -38,6 +40,12 @@ public class MainFragmentModule {
     @ActivityScope
     MainPresenter provideMainPresenter(MainPresenterImpl mainPresenter){
         return mainPresenter;
+    }
+
+    @Provides
+    @ActivityScope
+    AntivirusService provideAntivirusService(AntivirusServiceImpl antivirusService){
+        return antivirusService;
     }
 
 

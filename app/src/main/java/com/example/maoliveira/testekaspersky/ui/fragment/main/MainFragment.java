@@ -25,8 +25,8 @@ import butterknife.InjectView;
 public class MainFragment extends BaseFragment implements MainView, View.OnClickListener {
     private static String TAG = MainFragment.class.getName();
 
- /*   @Inject
-    MainPresenter presenter;*/
+    @Inject
+    MainPresenter presenter;
 
     @InjectView(R.id.resultView)
     TextView resultView;
@@ -73,7 +73,7 @@ public class MainFragment extends BaseFragment implements MainView, View.OnClick
     public void onClick(View v) {
         Log.i(TAG,"entrou");
         if (v.getId() == R.id.button) {
-          /*  presenter.scan(v);*/
+            presenter.scan(v);
         }
     }
 
